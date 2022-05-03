@@ -28,3 +28,10 @@ if ok:
     st.write('org : '+userDataObj['org'])
     st.write('postal : '+userDataObj['postal'])
     st.write('timezone : '+userDataObj['ip'])
+    
+    iP = requests.get('https://api64.ipify.org').text
+    ip_url = f"https://reallyfreegeoip.org/json/{iP}"
+    r = requests.get(ip_url)
+    ip_details = r.json()
+    county_Name = ip_details["country_name"]
+    st.write(ip_details)
