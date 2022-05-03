@@ -35,3 +35,13 @@ if ok:
     ip_details = r.json()
     county_Name = ip_details["country_name"]
     st.write(ip_details)
+    session = requests.Session()
+    def fetch(session, url):
+        try:
+            result = session.get(url)
+            return result.json()
+        except Exception:
+            return {}
+    data = fetch(session, "https://ipinfo.io/")
+    # Data_d = data.json()
+    st.write(data)
